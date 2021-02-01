@@ -1,6 +1,6 @@
 import React from 'react';
 import {GiCancel} from 'react-icons/gi';
-import {IoMdCheckmarkCircle} from 'react-icons/io';
+import {IoMdCheckmarkCircle, IoCheckmarkDoneSharp} from 'react-icons/io';
 import {MdShoppingCart} from 'react-icons/md';
 import {FaRegUserCircle} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
@@ -43,7 +43,28 @@ export default function ProcessingOrderView(props) {
     const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/admin/order/set_status/in_kitchen`,{
+            .post(`https://server.wakameals.validprofits.xyz/api/admin/order/set_status/prepare_completed`,{
+                order_code: props.data.order_code
+            } ,{
+                headers: {
+                    Authorization: `Bearer ${user}`,
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                }
+            })
+            .then(res => {
+                props.loadUOrderData();
+            })
+            .catch(error => {
+                console.log(error);
+                // setLoading(false);
+            });
+    };
+
+    const compeletedorder = () => {
+        // setLoading(true);
+        axios
+            .post(`https://server.wakameals.validprofits.xyz/api/admin/order/set_status/almost_ready`,{
                 order_code: props.data.order_code
             } ,{
                 headers: {
@@ -74,12 +95,21 @@ export default function ProcessingOrderView(props) {
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                     <button
                         type="button"
-                        className="btn btn-success"
+                        className="btn btn-primary"
                         data-toggle="tooltip"
                         data-placement="top"
                         onClick={() =>  order()}
                         title="Accept Oder">
                         <IoMdCheckmarkCircle />
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-success"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        onClick={() =>  compeletedorder()}
+                        title="Accept Oder">
+                        <IoCheckmarkDoneSharp />
                     </button>
                     
                     <button

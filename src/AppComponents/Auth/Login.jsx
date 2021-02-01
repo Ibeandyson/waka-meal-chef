@@ -76,16 +76,20 @@ export default function Login(props) {
                                     SignIn
                                 </button>
                             </div>
-                            <Link style={{color: 'inherit', textDecoration: 'inherit'}} to="/signup">
+
+                            <div class="form-group col-md-12">
+                                <Link style={{color: 'inherit', textDecoration: 'inherit'}} to="/forgot-password">
+                                    <p className="btn" style={{color: 'black', fontWeight: 'bold', fontSize: '0.7em'}}>
+                                        Forget Password
+                                    </p>
+                                </Link>
                                 <p className="text-center" style={{fontSize: '0.7em'}}>
-                                    Don't Have an account <b>Sign up here</b>
+                                    Don't Have an account{' '}
+                                    <Link style={{color: 'inherit', textDecoration: 'inherit'}} to="/signup">
+                                        <b>Sign up here</b>
+                                    </Link>
                                 </p>
-                            </Link>
-                            {/* <div class="form-group col-md-12">
-                                <p className="btn" style={{color: 'black', fontWeight: 'bold'}}>
-                                    Forget Password
-                                </p>
-                            </div> */}
+                            </div>
                         </div>
                     </from>
                 </div>

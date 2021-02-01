@@ -17,7 +17,7 @@ export default function Dashboard(props) {
             <div className="container">
             <div className="text-center">
                
-                <h3 style={{color: 'black', fontWeight: 'bold', marginTop: '15%'}}>Admin</h3>
+                <h3 style={{color: 'black', fontWeight: 'bold', marginTop: '15%'}}>Chef</h3>
             </div>
                 <div className="row">
                     <div className="col-lg-3 col-md-6 col-12 mb-3 ">

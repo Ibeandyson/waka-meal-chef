@@ -6,6 +6,8 @@ import  OpenedOrderList from "./AppComponents/User/OpenedOrderList"
 import  ProcessingOrderList from "./AppComponents/User/ProcessingOrderList"
 import  CompeletedOrderList from "./AppComponents/User/CompeletedOrderList"
 import Login from "./AppComponents/Auth/Login"
+import ForgotPassword from "./AppComponents/Auth/ForgotPassword"
+import SetNewPassword from "./AppComponents/Auth/SetNewPassword"
 import Signup from "./AppComponents/Auth/Signup"
 import PasswordChange from "./AppComponents/User/PasswordChange"
 
@@ -34,11 +36,15 @@ function App(props) {
 	<Switch>
     <Route exact path="/" component={Login}/>
     <Route exact path="/signup" component={Signup}/>
+    <Route {...props} exact path="/forgot-password" component={ForgotPassword}/>
+    <Route {...props} exact path="/set-password" component={SetNewPassword}/>
     <PrivateRoute {...props} exact path="/dashboard" component={Dashboard}/>
     <PrivateRoute {...props} exact path="/open-order-list" component={OpenedOrderList}/>
     <PrivateRoute {...props} exact path="/processing-order-list" component={ProcessingOrderList }/>
     <PrivateRoute {...props} exact path="/change-password" component={PasswordChange}/>
     <PrivateRoute {...props} exact path="/compeleted-order-list" component={CompeletedOrderList}/>
+   
+   
    
   </Switch>
   </Router>
