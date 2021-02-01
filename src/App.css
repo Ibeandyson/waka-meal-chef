@@ -1,0 +1,152 @@
+/* ========= NAVBAR SECTION ========== */
+
+.navbar {
+    background: #000000;
+    color: #fff;
+}
+
+.navbar li a {
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.navbar li a:hover {
+    color: #ff7417 !important;
+}
+
+.navbar .mdi {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* *========== THE FOOD LISTING======= */
+
+.food-list-accordion {
+    background: #ff7417;
+    color: #fff;
+    margin-bottom: 5px;
+    margin-top: 2rem;
+}
+.sub-food-list-accordion {
+    background: black;
+    color: #fff;
+    margin-bottom: 1px;
+    padding: 0px !important;
+}
+
+.food-list-accordion .body-inner {
+    background: #fff;
+    color: #000000;
+}
+
+.food-list-name {
+    font-weight: bold;
+}
+
+.btn-style {
+    color: #ff7417;
+    border: 1px #ff7417 solid;
+    font-size: smaller;
+}
+
+.btn-style:hover {
+    color: #ff7417;
+}
+
+.my-text h2 {
+    color: #fff;
+}
+.food-list-item-1 {
+    font-weight: bold;
+    padding-right: 10px;
+    opacity: 0.7;
+}
+
+/* ====== THE FOOD LISTING SECOND ROW===== */
+
+.pay-box {
+    margin-top: 2rem;
+}
+
+.card-head {
+    background: #ff7417;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 3px;
+}
+
+.note-warning {
+    font-weight: bold;
+}
+
+.btn-pay {
+    background: #ff7417;
+    color: #fff;
+    border: none;
+}
+/* ==========ITEM DETAIL STYLE======== */
+.item-detail-page {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* =======USER DASHBOARD */
+.making-page-centerelized{
+    max-width: 1000px;
+    margin: auto;
+}
+.cat-subcat{
+    max-width: 700px;
+    margin: auto;
+}
+.card-hover:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.card-hover {
+    width: 100%;
+    height: 100%;
+    background-color: #ff7417;
+    color: white;
+}
+
+  input[type=text]{
+    font-size: 0.8em;
+  
+  }
+  input[type=number]{
+    font-size: 0.8em;
+  
+  }
+  .login{
+      max-width: 700px;
+      margin: auto;
+  }
+
+  /* ============STYLE FOR PRELOADER=============== */
+  .overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+  .spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }
+  
