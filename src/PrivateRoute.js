@@ -10,10 +10,7 @@ import Cookie from "js-cookie";
 				Cookie.get('user') ? (
 					<Component {...props} />
 				) : (
-					<Redirect to={{
-						pathname: "/",
-						state: {from: props.location}
-					}}
+					<Redirect to="/"
 					/>
 				)
 			}

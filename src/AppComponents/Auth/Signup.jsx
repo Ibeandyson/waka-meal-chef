@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {withRouter, Link} from 'react-router-dom';
 import {signup} from '../../Redux/actions';
 import Preloader from '../ReuseableCompononts/Preloader';
+import axios from "axios"
 
 
 
@@ -20,6 +21,7 @@ function Signup(props) {
     const userSignup = useSelector(state => state.userSignup);
     const {loading, user, error} = userSignup;
     const [show, setShow] = useState(false);
+    const [placeData, setPlaceData] = useState([]);
  
     
 
@@ -35,9 +37,31 @@ function Signup(props) {
 
 useEffect(() => {
     if (user) {
-        window.location.push('/')
+        props.history.push('/');
     }
 }, [user])
+
+
+const loadplace = () => {
+    axios
+        .get('https://server.wakameals.validprofits.xyz/api/place/list', {
+            headers: {
+                Authorization: `Bearer ${user}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        })
+        .then(res => {
+            setPlaceData(res.data.places);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+useEffect(() => {
+    loadplace();
+}, [])
 
     return (
         <div className="login container">
@@ -92,14 +116,26 @@ useEffect(() => {
                             <label style={styles.label} for="inputCity">
                                 Place
                             </label>
-                            <input
-                                value={place}
-                                name="place"
-                                onChange={e => onChangeHandler(e)}
-                                type="number"
-                                placeholder="Enter Place"
-                                class="form-control"
-                            />
+                            <select
+                            name="place"
+                            onChange={e => onChangeHandler(e)}
+                            id="inputState"
+                            class="form-control"
+                            style={{fontSize: '0.7em'}}>
+                            <option hidden>
+                                {'>>>>'} Choose Place {'<<<<'}
+                            </option>
+                            {placeData.map(data => (
+                                <option
+                                    className="cursor"
+                                    key={data.slug}
+                                    value={data.id}
+                                    selected={place === data.id ? true : false}>
+                                    {data.name}
+                                </option>
+                            ))}
+                        </select>
+                           
                             {error && <p style={styles.formError}>{error.errors.place}</p>}
                         </div>
                         <div class="form-group col-md-12">

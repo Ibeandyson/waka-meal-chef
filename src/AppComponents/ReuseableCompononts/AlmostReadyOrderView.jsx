@@ -43,9 +43,8 @@ export default function AlmostReasyOrderView(props) {
     const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/chef/order/set_status`,{
-                order_id: props.data.id,
-                new_status: "prepare_completed"
+            .post(`https://server.wakameals.validprofits.xyz/api/chef/order/set_status/prepare_completed`,{
+                order_code: props.data.code
             } ,{
                 headers: {
                     Authorization: `Bearer ${user}`,
@@ -76,7 +75,7 @@ export default function AlmostReasyOrderView(props) {
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-success"
                         data-toggle="tooltip"
                         data-placement="top"
                         onClick={() =>  order()}>

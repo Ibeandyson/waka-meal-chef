@@ -23,11 +23,18 @@ export default function Login(props) {
     const onSubmitHandle = e => {
         e.preventDefault();
         dispatch(signin(identifier, password)).then(() => {}).then(() => {
-            props.history.push('/dashboard');
-            // window.location.reload();
+           
+           
         });
     };
 
+    useEffect(() => {
+        if (user) {
+            props.history.push('/dashboard');
+            window.location.reload();
+        }
+    }, [user])
+    
     return (
         <div className="login container">
             {loading ? <Preloader /> : null}

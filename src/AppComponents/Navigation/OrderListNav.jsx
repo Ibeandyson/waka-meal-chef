@@ -32,13 +32,21 @@ export default function OrderListNav(props) {
 
                             <button
                                 className="btn btn-block"
-                                onClick={() => props.history.push('/processing-order-list')}
+                                onClick={() => props.history.push('/inkitchen-order-list')}
                                 data-dismiss="modal"
                                 style={{backgroundColor: 'black', color: 'white', fontWeight: 'bold'}}>
-                                Processing Orders
+                                In Kitchen Orders
                             </button>
 
-                           
+                            <hr />
+
+                            <button
+                                className="btn btn-block"
+                                onClick={() => props.history.push('/almostready-order-list')}
+                                data-dismiss="modal"
+                                style={{backgroundColor: 'black', color: 'white', fontWeight: 'bold'}}>
+                                Almost Ready Orders
+                            </button>
                             <hr />
 
                             <button
@@ -48,7 +56,6 @@ export default function OrderListNav(props) {
                                 style={{backgroundColor: 'black', color: 'white', fontWeight: 'bold'}}>
                                 Compeleted Orders
                             </button>
-
                         </div>
                     </div>
                 </div>

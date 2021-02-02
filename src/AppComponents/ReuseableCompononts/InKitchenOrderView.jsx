@@ -43,9 +43,9 @@ export default function InKitchenOrderView(props) {
     const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/chef/order/set_status`,{
-                order_id: props.data.id,
-                new_status: "almost_ready"
+            .post(`https://server.wakameals.validprofits.xyz/api/chef/order/set_status/almost_ready`,{
+                order_code: props.data.code,
+               
             } ,{
                 headers: {
                     Authorization: `Bearer ${user}`,
@@ -65,7 +65,6 @@ export default function InKitchenOrderView(props) {
     return (
         <tr key={props.data.id}>
             <td>{props.data.code}</td>
-            <td>3</td>
             <td><Moment format="D MMM YYYY" withTitle>{props.data.created_at}</Moment></td>
             <td>
                 <span class="badge badge-success">{props.data.status}</span>
@@ -75,7 +74,7 @@ export default function InKitchenOrderView(props) {
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-success"
                         data-toggle="tooltip"
                         data-placement="top"
                         onClick={() =>  order()}>

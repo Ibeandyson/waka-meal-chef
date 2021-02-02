@@ -13,7 +13,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Naira from 'react-naira';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
-import Moment from "react-moment";
+import Moment from 'react-moment';
 
 export default function OpenedOrderView(props) {
     const [open, setOpen] = React.useState(false);
@@ -25,7 +25,6 @@ export default function OpenedOrderView(props) {
     const handleClose = () => {
         setOpen(false);
     };
-
 
     const [openUser, setOpenUser] = React.useState(false);
 
@@ -40,18 +39,23 @@ export default function OpenedOrderView(props) {
     const userSignin = useSelector(state => state.userSignin);
     const {user} = userSignin;
 
-    const order= () => {
+    const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/admin/order/set_status/in_kitchen`,{
-                order_code: props.data.order_code
-            } ,{
-                headers: {
-                    Authorization: `Bearer ${user}`,
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json'
+            .post(
+                `https://server.wakameals.validprofits.xyz/api/chef/order/set_status/in_kitchen`,
+                {
+                    order_code: props.data.code,
+                    
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${user}`,
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json'
+                    }
                 }
-            })
+            )
             .then(res => {
                 props.loadUOrderData();
             })
@@ -65,7 +69,11 @@ export default function OpenedOrderView(props) {
         <tr key={props.data.id}>
             <td>{props.data.code}</td>
             <td>3</td>
-            <td><Moment format="D MMM YYYY" withTitle>{props.data.created_at}</Moment></td>
+            <td>
+                <Moment format="D MMM YYYY" withTitle>
+                    {props.data.created_at}
+                </Moment>
+            </td>
             <td>
                 <span class="badge badge-success">{props.data.status}</span>
             </td>
@@ -77,20 +85,19 @@ export default function OpenedOrderView(props) {
                         className="btn btn-success"
                         data-toggle="tooltip"
                         data-placement="top"
-                        onClick={() =>  order()}
+                        onClick={() => order()}
                         title="Accept Oder">
                         <IoMdCheckmarkCircle />
                     </button>
-                    
+
                     <button
                         type="button"
                         className="btn btn-secondary"
                         data-toggle="modal"
                         data-tooltip="tooltip"
-                        onClick={() =>  handleClickOpen()}
+                        onClick={() => handleClickOpen()}
                         data-target="#viewOrderModal"
                         data-placement="top"
-                       
                         title="View Order">
                         <MdShoppingCart style={{color: 'white'}} />
                     </button>
@@ -101,7 +108,7 @@ export default function OpenedOrderView(props) {
                         data-tooltip="tooltip"
                         data-target="#userProfileModal"
                         data-placement="top"
-                        onClick={() =>  handleClickOpenUser()}
+                        onClick={() => handleClickOpenUser()}
                         title="View User">
                         <FaRegUserCircle />
                     </button>
@@ -118,69 +125,83 @@ export default function OpenedOrderView(props) {
                         <div className="container-lg ">
                             {props.data.ordered_meals.map(data => (
                                 <div key={data.id}>
-                                     <h5 className="mt-3 mb-3" style={{fontWeight: "bolder",  color: "#ff7417"}}><u>Person: {data.name}</u></h5>
-                                    <h6 className="mt-3 mb-3" style={{fontWeight: "bolder",  color: "#ff7417"}}> Meal</h6>
+                                    <h5 className="mt-3 mb-3" style={{fontWeight: 'bolder', color: '#ff7417'}}>
+                                        <u>Person: {data.name}</u>
+                                    </h5>
+                                    <h6 className="mt-3 mb-3" style={{fontWeight: 'bolder', color: '#ff7417'}}>
+                                        {' '}
+                                        Meal
+                                    </h6>
                                     <div className="block mb-3">
                                         <img src={data.meal.image} style={{height: '100%', width: '100%'}} />
                                     </div>
-                                    <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                    <p style={{fontSize: '0.7em', color: 'black'}}>
                                         <b>Meal Name</b>:<span className="ml-2">{data.meal.name}</span>
                                     </p>
-                                    <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                    <p style={{fontSize: '0.7em', color: 'black'}}>
                                         <b>Measurement Quantity</b>:<span className="ml-2">{data.meal.measurement_quantity}</span>
                                     </p>
-                                    <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                    <p style={{fontSize: '0.7em', color: 'black'}}>
                                         <b>Measurement Type</b>:<span className="ml-2">{data.meal.measurement_type}</span>
                                     </p>
-                                    <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                    <p style={{fontSize: '0.7em', color: 'black'}}>
                                         <b>Price</b>:<span className="ml-2">
                                             <Naira>{data.meal.price}</Naira>
                                         </span>
                                     </p>
-                                   
-                                    <h6 className="mt-3 mb-3"   className="mt-3 mb-3" style={{fontWeight: "bolder",  color: "#ff7417"}}>Ordered Meals Extras</h6>
+
+                                    <h6
+                                        className="mt-3 mb-3"
+                                        className="mt-3 mb-3"
+                                        style={{fontWeight: 'bolder', color: '#ff7417'}}>
+                                        Ordered Meals Extras
+                                    </h6>
                                     {data.ordered_meal_extra_items.map(data => (
                                         <div key={data.id}>
-                                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                                 <b>Price</b>:<span className="ml-2">{data.cost}</span>
                                             </p>
-                                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                                 <b>Quantity</b>:<span className="ml-2">{data.quantity}</span>
                                             </p>
-                                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                                 <b>Meal Name</b>:<span className="ml-2">{data.meal_extra_item.name}</span>
                                             </p>
-                                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                                 <b>Measurement Quantity</b>:<span className="ml-2">{data.meal_extra_item.measurement_quantity}</span>
                                             </p>
-                                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                                 <b>Measurement Type</b>:<span className="ml-2">{data.meal_extra_item.measurement_type}</span>
                                             </p>
-                                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                                 <b>Price</b>:<span className="ml-2">
                                                     <Naira>{data.meal_extra_item.price}</Naira>
                                                 </span>
                                             </p>
-                                            <hr/>
+                                            <hr />
                                         </div>
                                     ))}
-                                   
                                 </div>
                             ))}
-                            <h6 className="mt-3 mb-3"  className="mt-3 mb-3" style={{fontWeight: "bolder",  color: "#ff7417"}}>Ordered Summery</h6>
-                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                            <h6
+                                className="mt-3 mb-3"
+                                className="mt-3 mb-3"
+                                style={{fontWeight: 'bolder', color: '#ff7417'}}>
+                                Ordered Summery
+                            </h6>
+                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                 <b>Delivery Type</b>
                                 <span className="ml-2">{props.data.delivery_type}</span>
                             </p>
-                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                 <b>Order Type</b>
                                 <span className="ml-2">{props.data.type}</span>
                             </p>
-                            <p  style={{fontSize: "0.7em" ,color: "black"}}>
+                            <p style={{fontSize: '0.7em', color: 'black'}}>
                                 <b>Address</b>
                                 <span className="ml-2">{props.data.address}</span>
                             </p>
-                            <p  style={{fontWeight: "bolder",  color: "black"}}>
+                            <p style={{fontWeight: 'bolder', color: 'black'}}>
                                 <b>Total Price</b> =
                                 <span className="ml-2">
                                     <Naira>{props.data.total}</Naira>
@@ -200,10 +221,6 @@ export default function OpenedOrderView(props) {
                 </DialogActions>
             </Dialog>
 
-
-
-
-
             <Dialog
                 open={openUser}
                 onClose={handleCloseUser}
@@ -213,11 +230,13 @@ export default function OpenedOrderView(props) {
                     <DialogContentText id="alert-dialog-description">
                         <div className="container-lg ">
                             <div className="block text-center mb-5">
-                            <p className="mt-3" style={{color: 'black', fontSize: "0.9" }}><span>{props.data.user.last_name}</span><span className="m-2">{props.data.user.first_name}</span></p>
-                            <p style={{color: 'black', fontSize: "0.7em" }}>{props.data.user.email}</p>
-                            <p style={{color: 'black', fontSize: "0.7em" }}>{props.data.user.phone}</p>
+                                <p className="mt-3" style={{color: 'black', fontSize: '0.9'}}>
+                                    <span>{props.data.user.last_name}</span>
+                                    <span className="m-2">{props.data.user.first_name}</span>
+                                </p>
+                                <p style={{color: 'black', fontSize: '0.7em'}}>{props.data.user.email}</p>
+                                <p style={{color: 'black', fontSize: '0.7em'}}>{props.data.user.phone}</p>
                             </div>
-                        
                         </div>
                     </DialogContentText>
                 </DialogContent>
