@@ -85,7 +85,6 @@ export default function ProcessingOrderView(props) {
     return (
         <tr key={props.data.id}>
             <td>{props.data.code}</td>
-            <td>3</td>
             <td><Moment format="D MMM YYYY" withTitle>{props.data.created_at}</Moment></td>
             <td>
                 <span class="badge badge-success">{props.data.status}</span>
