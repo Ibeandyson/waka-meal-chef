@@ -28,7 +28,7 @@ export default function SetNewPassword(props) {
         let id = params.id;
         let token = params.token;
         axios
-            .post('https://server.wakameals.validprofits.xyz/api/chef/auth/password/reset/validate_token', {id, token})
+            .post('https://server.wakafoods.com/api/chef/auth/password/reset/validate_token', {id, token})
             .then(res => {
                 console.log(res);
                 setIsValid(true);
@@ -58,7 +58,7 @@ export default function SetNewPassword(props) {
         payload.append('email', email);
         setloading(true);
         axios
-            .post('https://server.wakameals.validprofits.xyz/api/chef/auth/password/reset/new_password', payload, {
+            .post('https://server.wakafoods.com/api/chef/auth/password/reset/new_password', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                     Accept: 'application/json'

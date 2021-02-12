@@ -36,7 +36,7 @@ export default function CompeletedOrderList(props) {
     const loadUOrderData = () => {
         setLoading(true);
         axios
-            .get('https://server.wakameals.validprofits.xyz/api/chef/order/list/prepared', {
+            .get('https://server.wakafoods.com/api/chef/order/list/prepared', {
                 headers: {
                     Authorization: `Bearer ${user}`,
                     'Content-Type': 'application/json',

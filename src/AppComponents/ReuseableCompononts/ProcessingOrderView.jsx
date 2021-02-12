@@ -43,7 +43,7 @@ export default function ProcessingOrderView(props) {
     const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/admin/order/set_status/prepare_completed`,{
+            .post(`https://server.wakafoods.com/api/admin/order/set_status/prepare_completed`,{
                 order_code: props.data.order_code
             } ,{
                 headers: {
@@ -64,7 +64,7 @@ export default function ProcessingOrderView(props) {
     const compeletedorder = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/admin/order/set_status/almost_ready`,{
+            .post(`https://server.wakafoods.com/api/admin/order/set_status/almost_ready`,{
                 order_code: props.data.order_code
             } ,{
                 headers: {

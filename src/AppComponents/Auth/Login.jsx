@@ -14,6 +14,7 @@ export default function Login(props) {
         identifier: '',
         password: ''
     });
+    const [nextpage, setNextpage] = useState(false);
 
     const {identifier, password} = formData;
     const onChangeHandler = e => {
@@ -22,18 +23,17 @@ export default function Login(props) {
 
     const onSubmitHandle = e => {
         e.preventDefault();
-        dispatch(signin(identifier, password)).then(() => {}).then(() => {
-           
-           
-        });
+        dispatch(signin(identifier, password)).then(() => {
+            setNextpage(true);
+        })
     };
 
-    useEffect(() => {
+    if (nextpage === true) {
+        props.history.push('/dashboard');
         if (user) {
-            props.history.push('/dashboard');
             window.location.reload();
         }
-    }, [user])
+    }
     
     return (
         <div className="login container">

@@ -44,7 +44,7 @@ useEffect(() => {
 
 const loadplace = () => {
     axios
-        .get('https://server.wakameals.validprofits.xyz/api/place/list', {
+        .get('https://server.wakafoods.com/api/place/list', {
             headers: {
                 Authorization: `Bearer ${user}`,
                 'Content-Type': 'application/json',

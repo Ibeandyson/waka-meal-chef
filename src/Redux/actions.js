@@ -16,7 +16,7 @@ export const signin = (identifier, password) => async (dispatch) => {
 	dispatch({ type: USER_SIGNIN_REQUEST, payload: { identifier, password } });
 	try {
 		const { data } = await axios.post(
-			"https://server.wakameals.validprofits.xyz/api/chef/auth/login/default",
+			"https://server.wakafoods.com/api/chef/auth/login/default",
 			{
 				identifier,
 				password
@@ -46,7 +46,7 @@ export const signup = (
 	});
 	try {
 		const { data } = await axios.post(
-			"https://server.wakameals.validprofits.xyz/api/chef/auth/register/default",
+			"https://server.wakafoods.com/api/chef/auth/register/default",
 			{
 				name, place, phone, email, password, dispatcher_code
 			}

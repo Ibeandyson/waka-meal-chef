@@ -43,7 +43,7 @@ export default function AlmostReasyOrderView(props) {
     const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/chef/order/set_status/prepare_completed`,{
+            .post(`https://server.wakafoods.com/api/chef/order/set_status/prepare_completed`,{
                 order_code: props.data.code
             } ,{
                 headers: {

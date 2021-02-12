@@ -43,7 +43,7 @@ export default function OpenedOrderView(props) {
         // setLoading(true);
         axios
             .post(
-                `https://server.wakameals.validprofits.xyz/api/chef/order/set_status/in_kitchen`,
+                `https://server.wakafoods.com/api/chef/order/set_status/in_kitchen`,
                 {
                     order_code: props.data.code,
                     

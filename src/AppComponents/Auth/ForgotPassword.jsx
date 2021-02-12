@@ -30,7 +30,7 @@ export default function ForgotPassword() {
         payload.append('email', data.email);
         setLoading(true);
         axios
-            .post('https://server.wakameals.validprofits.xyz/api/chef/auth/password/reset/request', payload, {
+            .post('https://server.wakafoods.com/api/chef/auth/password/reset/request', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                     Accept: 'application/json'

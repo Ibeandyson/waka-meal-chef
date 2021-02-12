@@ -32,7 +32,7 @@ export default function PasswordChange(props) {
         e.preventDefault();
         setLoading(true);
         if (formData.new_password === formData.retype_new_password) {
-            Axios.post('https://server.wakameals.validprofits.xyz//api/chef/profile/password/update', formData, {
+            Axios.post('https://server.wakafoods.com//api/chef/profile/password/update', formData, {
                 headers: {
                     Authorization: `Bearer ${user}`,
                     'Content-Type': 'application/json',

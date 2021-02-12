@@ -43,7 +43,7 @@ export default function InKitchenOrderView(props) {
     const order = () => {
         // setLoading(true);
         axios
-            .post(`https://server.wakameals.validprofits.xyz/api/chef/order/set_status/almost_ready`,{
+            .post(`https://server.wakafoods.com/api/chef/order/set_status/almost_ready`,{
                 order_code: props.data.code,
                
             } ,{

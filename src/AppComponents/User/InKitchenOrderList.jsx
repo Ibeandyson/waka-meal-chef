@@ -36,7 +36,7 @@ export default function AlmostReasyOrderList(props) {
     const loadUOrderData = () => {
         setLoading(true);
         axios
-            .get('https://server.wakameals.validprofits.xyz/api/chef/order/list/in_kitchen', {
+            .get('https://server.wakafoods.com/api/chef/order/list/in_kitchen', {
                 headers: {
                     Authorization: `Bearer ${user}`,
                     'Content-Type': 'application/json',
