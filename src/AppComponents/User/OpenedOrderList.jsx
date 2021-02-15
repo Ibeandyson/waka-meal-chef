@@ -88,7 +88,6 @@ export default function OpenedOrderList(props) {
                     <thead class="thead-light"  style={{fontSize: '0.7em', width: '50px'}}>
                         <tr>
                             <th>Order Code</th>
-                            <th>Quantity</th>
                             <th>Date</th>
                             <th>Status</th>
                             <th>Type</th>

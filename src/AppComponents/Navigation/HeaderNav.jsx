@@ -2,7 +2,7 @@ import React from 'react';
 import {BiMenuAltRight} from 'react-icons/bi';
 import {Link} from 'react-router-dom';
 import Cookie from "js-cookie";
-import Logo from "../../images/wmlogo.jpg"
+import Logo from "../../images/logo.jpg"
 export default function HeaderNav() {
     return (
         <div>
@@ -10,7 +10,7 @@ export default function HeaderNav() {
             <nav className="navbar navbar-expand-lg">
                 <a className="navbar-brand" href="#">
                     {' '}
-                    <img src={Logo}  style={{height: "50px", }}/>
+                    <img src={Logo}  style={{height: "20px", }}/>
                 </a>
                 <button
                 className={`${Cookie.get('user') ? "d-sm-block  d-md-block" : "d-none "}  d-lg-none navbar-toggler`}

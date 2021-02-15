@@ -1,7 +1,6 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {signin} from '../../Redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import Preloader from '../ReuseableCompononts/Preloader';
 import {Link} from 'react-router-dom';
 
