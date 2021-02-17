@@ -100,8 +100,7 @@ export default function AlmostReadyOrderList(props) {
                     <InfiniteScroll
                             dataLength={oderData.length}
                             next={nextData}
-                            hasMore={oders.current_page !== oders.last_page ? true : false}
-                            loader={<h4 style={{textAlign: 'center', color: 'gray'}}>Loading...</h4>}
+                            hasMore={oders.current_page === oders.last_page ? true : false}
                             endMessage={<p style={{textAlign: 'center'}} />}
                         />
                 </table>
